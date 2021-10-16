@@ -1,0 +1,41 @@
+{
+  "name": "violet-api",
+  "version": "1.0.0",
+  "description": "Violet API",
+  "main": "index.js",
+  "type": "module",
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "start": "fastify start -l info api/index.js",
+    "dev": "fastify start -w -l info -P api/index.js",
+    "lint": "xo",
+    "test": "tap test/**/*.test.js | tnyan",
+    "test:detail": "tap test/**/*.test.js",
+    "test:report": "tap test/**/*.test.js  --coverage-report=html"
+  },
+  "keywords": [
+    "api",
+    "graph-ql",
+    "fastify",
+    "neo4j"
+  ],
+  "author": "Alexander Vu",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "fastify": "^3.22.0",
+    "fastify-autoload": "^3.9.0",
+    "fastify-cli": "^2.13.0",
+    "fastify-compress": "^3.6.1",
+    "fastify-env": "^2.1.1",
+    "fastify-helmet": "^5.3.2",
+    "fastify-multipart": "^5.0.2"
+  },
+  "devDependencies": {
+    "tap": "^15.0.10",
+    "tap-nyan": "^1.1.0",
+    "xo": "^0.45.0"
+  }
+}
