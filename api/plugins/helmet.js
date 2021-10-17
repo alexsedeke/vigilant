@@ -1,3 +1,4 @@
+import process from 'node:process'
 import fp from 'fastify-plugin'
 import helmet from 'fastify-helmet'
 

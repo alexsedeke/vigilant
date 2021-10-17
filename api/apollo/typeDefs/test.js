@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-fastify'
+import {gql} from 'apollo-server-fastify'
 
 const typeDefs = gql`
   type Movie {
@@ -12,6 +12,6 @@ const typeDefs = gql`
     name: String
     movies: [Movie] @relationship(type: "IN_GENRE", direction: IN)
   }
-`;
+`
 
 export default typeDefs

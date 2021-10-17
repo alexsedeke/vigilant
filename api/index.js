@@ -1,7 +1,9 @@
+import process from 'node:process'
 import path from 'node:path'
 import {fileURLToPath} from 'node:url'
 import dotenv from 'dotenv'
 import AutoLoad from 'fastify-autoload'
+
 dotenv.config()
 
 const __filename = fileURLToPath(import.meta.url)
@@ -20,7 +22,7 @@ const app = async function (fastify, appOptions) {
   // through your application
   fastify.register(AutoLoad, {
     dir: path.join(__dirname, 'plugins'),
-    options: Object.assign({}, appOptions)
+    options: {...appOptions}
   })
 
   // This loads all plugins defined in routes
@@ -28,7 +30,7 @@ const app = async function (fastify, appOptions) {
   fastify.register(AutoLoad, {
     dir: path.join(__dirname, 'routes'),
     ignorePattern: /.*(test|spec|helper).js/,
-    options: Object.assign({}, appOptions)
+    options: {...appOptions}
   })
 }
 
