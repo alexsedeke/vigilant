@@ -1,20 +1,16 @@
 import { gql } from 'apollo-server-fastify'
 
 const typeDefs = gql`
-  # A book has a title and an author
-  type Book {
+  type Movie {
     title: String
-    author: String
+    year: Int
+    imdbRating: Float
+    genres: [Genre] @relationship(type: "IN_GENRE", direction: OUT)
   }
 
-  # An author has a name and a list of books
-  type Author {
+  type Genre {
     name: String
-  }
-
-  type Query {
-    books: [Book]
-    authors: [Author]
+    movies: [Movie] @relationship(type: "IN_GENRE", direction: IN)
   }
 `;
 
