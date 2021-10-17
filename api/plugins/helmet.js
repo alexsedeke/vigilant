@@ -19,9 +19,9 @@ export default fp(async fastify => {
         'block-all-mixed-content': [],
         'font-src': ['\'self\'', 'https:', 'data:'],
         'frame-ancestors': ['\'self\''],
-        'img-src': ['\'self\'', 'data:'],
+        'img-src': ['\'self\'', 'data:', 'http://cdn.jsdelivr.net/npm/@apollographql/'],
         'object-src': ['\'self\''],
-        'script-src': ['\'self\'', '\'unsafe-inline\'', '\'unsafe-eval\''],
+        'script-src': ['\'self\'', '\'unsafe-inline\'', '\'unsafe-eval\'', 'https://cdn.jsdelivr.net/npm/@apollographql/'],
         'script-src-attr': ['\'none\''],
         'style-src': ['\'self\'', 'https:', '\'unsafe-inline\''],
         'upgrade-insecure-requests': []

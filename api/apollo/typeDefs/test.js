@@ -4,7 +4,7 @@ const typeDefs = gql`
   # A book has a title and an author
   type Book {
     title: String
-    author: Author
+    author: String
   }
 
   # An author has a name and a list of books

@@ -3,7 +3,9 @@ import {fileURLToPath} from 'node:url'
 import dotenv from 'dotenv'
 import AutoLoad from 'fastify-autoload'
 import { ApolloServer } from 'apollo-server-fastify'
-import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core'
+import { ApolloServerPluginDrainHttpServer,
+         ApolloServerPluginLandingPageGraphQLPlayground,
+         ApolloServerPluginLandingPageDisabled } from 'apollo-server-core'
 
 import typeDefs from './apollo/typeDefs/test.js'
 import resolvers from './apollo/resolvers/test.js'
@@ -31,7 +33,7 @@ function fastifyAppClosePlugin(app) {
 
 const app = async function (fastify, appOptions) {
   // Place here your custom code!
-
+  console.log(process.env.NODE_ENV)
   // Do not touch the following lines
 
   // This loads all plugins defined in plugins
@@ -55,6 +57,10 @@ const app = async function (fastify, appOptions) {
     typeDefs,
     resolvers,
     plugins: [
+      // show graphql playground not on production
+      process.env.NODE_ENV === 'production'
+      ? ApolloServerPluginLandingPageDisabled()
+      : ApolloServerPluginLandingPageGraphQLPlayground(),
       fastifyAppClosePlugin(app),
       ApolloServerPluginDrainHttpServer({ httpServer: fastify.server }),
     ],
