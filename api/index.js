@@ -9,7 +9,10 @@ const __dirname = path.dirname(__filename)
 
 const app = async function (fastify, appOptions) {
   // Place here your custom code!
-  console.log(process.env.NODE_ENV)
+  if (process.env.NODE_ENV === 'development') {
+    fastify.log.info('You are in development mode')
+    fastify.log.info(`GraphQL Playground is availabe at http://127.0.0.1:${process.env.PORT}/graphql/`)
+  }
   // Do not touch the following lines
 
   // This loads all plugins defined in plugins
