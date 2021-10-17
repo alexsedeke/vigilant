@@ -8,7 +8,7 @@
     "node": ">=16"
   },
   "scripts": {
-    "start": "fastify start -l info api/index.js",
+    "start": "fastify start -l info -a 0.0.0.0 api/index.js",
     "dev": "fastify start -w -l info -P api/index.js",
     "lint": "xo",
     "test": "tap test/**/*.test.js | tnyan",
@@ -24,6 +24,8 @@
   "author": "Alexander Vu",
   "license": "ISC",
   "dependencies": {
+    "apollo-server-core": "^3.4.0",
+    "apollo-server-fastify": "^3.4.0",
     "dotenv": "^10.0.0",
     "fastify": "^3.22.0",
     "fastify-autoload": "^3.9.0",
@@ -32,7 +34,8 @@
     "fastify-env": "^2.1.1",
     "fastify-helmet": "^5.3.2",
     "fastify-multipart": "^5.0.2",
-    "fastify-sensible": "^3.1.1"
+    "fastify-sensible": "^3.1.1",
+    "graphql": "^15.6.1"
   },
   "devDependencies": {
     "tap": "^15.0.10",
