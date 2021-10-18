@@ -11,8 +11,8 @@ import typeDefs from '../apollo/typeDefs/test.js'
 // Import resolvers from '../apollo/resolvers/test.js'
 
 const driver = neo4j.driver(
-  process.env.VL_NEO4J_DB || 'bolt://localhost:7687',
-  neo4j.auth.basic(process.env.VL_NEO4J_AUTH_USER || 'neo4j', process.env.VL_NEO4J_AUTH_PASSWORD || 's3cr3t'))
+  process.env.VL_NEO4J_DB,
+  neo4j.auth.basic(process.env.VL_NEO4J_AUTH_USER, process.env.VL_NEO4J_AUTH_PASSWORD))
 const neoSchema = new Neo4jGraphQL({typeDefs, driver})
 
 /**
