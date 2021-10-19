@@ -1,4 +1,6 @@
 import process from 'node:process'
+import path from 'node:path'
+import url from 'node:url'
 import fp from 'fastify-plugin'
 import {ApolloServer} from 'apollo-server-fastify'
 import {ApolloServerPluginDrainHttpServer as apolloDrainHttpServer,
@@ -6,14 +8,10 @@ import {ApolloServerPluginDrainHttpServer as apolloDrainHttpServer,
   ApolloServerPluginLandingPageDisabled as apolloLandingPageDisabled} from 'apollo-server-core'
 import {Neo4jGraphQL} from '@neo4j/graphql'
 import neo4j from 'neo4j-driver'
+import { typeDefs } from '../apollo/loadFiles.js'
 
-import typeDefs from '../apollo/typeDefs/test.js'
-// Import resolvers from '../apollo/resolvers/test.js'
-
-const driver = neo4j.driver(
-  process.env.VL_NEO4J_DB,
-  neo4j.auth.basic(process.env.VL_NEO4J_AUTH_USER, process.env.VL_NEO4J_AUTH_PASSWORD))
-const neoSchema = new Neo4jGraphQL({typeDefs, driver})
+const __filename = url.fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 /**
  *
@@ -31,6 +29,14 @@ function fastifyAppClosePlugin(app) {
     }
   }
 }
+
+/**
+ * Connect to Neo4J and create Neo GraphQL Schema
+ */
+const driver = neo4j.driver(
+  process.env.VL_NEO4J_DB,
+  neo4j.auth.basic(process.env.VL_NEO4J_AUTH_USER, process.env.VL_NEO4J_AUTH_PASSWORD))
+const neoSchema = new Neo4jGraphQL({typeDefs, driver})
 
 /**
  * This plugins adds some utilities to handle http errors

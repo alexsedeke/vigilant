@@ -24,6 +24,7 @@
   "author": "Alexander Vu",
   "license": "ISC",
   "dependencies": {
+    "@graphql-tools/merge": "^8.1.2",
     "@neo4j/graphql": "^2.3.0",
     "apollo-server-core": "^3.4.0",
     "apollo-server-fastify": "^3.4.0",

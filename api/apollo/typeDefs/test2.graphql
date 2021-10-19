@@ -1,0 +1,4 @@
+type Genre {
+  name: String
+  movies: [Movie] @relationship(type: "IN_GENRE", direction: IN)
+}
