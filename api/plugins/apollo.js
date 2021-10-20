@@ -36,7 +36,15 @@ function fastifyAppClosePlugin(app) {
 const driver = neo4j.driver(
   process.env.VL_NEO4J_DB,
   neo4j.auth.basic(process.env.VL_NEO4J_AUTH_USER, process.env.VL_NEO4J_AUTH_PASSWORD))
-const neoSchema = new Neo4jGraphQL({typeDefs, driver})
+const neoSchema = new Neo4jGraphQL({
+  typeDefs,
+  driver,
+  config: {
+    jwt: {
+      secret: process.env.VL_NEO4J_JWT_SECRET
+    }
+  }
+})
 
 /**
  * This plugins adds some utilities to handle http errors
