@@ -66,10 +66,8 @@ export async function loadFiles(filePath, filter) {
   return filesData
 }
 
-let typeDefsArray
-(async () => {
-  typeDefsArray = await loadFiles('./typeDefs/', /^.*\.graphql\w*$/)
-})()
-
-const typeDefs = mergeTypeDefs(typeDefsArray)
-export {typeDefs}
+export async function loadTypeDefinitions() {
+  const typeDefsArray = await loadFiles('./typeDefs/', /^.*\.graphql\w*$/)
+  const typeDefs = mergeTypeDefs(typeDefsArray)
+  return typeDefs
+}
