@@ -1,6 +1,0 @@
-type Movie {
-  title: String
-  year: Int
-  imdbRating: Float
-  genres: [Genre] @relationship(type: "IN_GENRE", direction: OUT)
-}

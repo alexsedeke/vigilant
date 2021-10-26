@@ -5,6 +5,7 @@
     "comma-dangle": [
       "error",
       "never"
-    ]
+    ],
+    "import/no-unassigned-import": 0
   }
 }

@@ -1,6 +1,4 @@
 import process from 'node:process'
-import path from 'node:path'
-import url from 'node:url'
 import fp from 'fastify-plugin'
 import {ApolloServer} from 'apollo-server-fastify'
 import {ApolloServerPluginDrainHttpServer as apolloDrainHttpServer,
@@ -8,10 +6,7 @@ import {ApolloServerPluginDrainHttpServer as apolloDrainHttpServer,
   ApolloServerPluginLandingPageDisabled as apolloLandingPageDisabled} from 'apollo-server-core'
 import {Neo4jGraphQL} from '@neo4j/graphql'
 import neo4j from 'neo4j-driver'
-import { typeDefs } from '../apollo/loadFiles.js'
-
-const __filename = url.fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+import {typeDefs} from '../apollo/load-files.js'
 
 /**
  *

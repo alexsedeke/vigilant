@@ -1,19 +1,18 @@
 import fsSync from 'node:fs'
-import fs from 'fs/promises'
+import fs from 'node:fs/promises'
 import path from 'node:path'
 import url from 'node:url'
-import { mergeTypeDefs } from '@graphql-tools/merge'
-import asyncForEach from '../../lib/asyncForEach.js'
+import {mergeTypeDefs} from '@graphql-tools/merge'
+import asyncForEach from '../../lib/async-for-each.js'
 
 const __filename = url.fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 /**
- * 
- * @param {*} fileName 
+ * @param {*} fileName
  */
-async function readFile (fileName) {
-  return await fs.readFile(fileName, { encoding: 'utf8', flag: 'r' })
+async function readFile(fileName) {
+  return fs.readFile(fileName, {encoding: 'utf8', flag: 'r'})
 }
 
 /**
@@ -32,7 +31,7 @@ async function readFile (fileName) {
  * @param {string} directory directory path
  * @returns {Promise<Array<string>>}
  */
-export async function listFiles (directory, filter = /^.*$/) {
+export async function listFiles(directory, filter = /^.*$/) {
   let fileList = []
 
   if (!fsSync.existsSync(directory)) {
@@ -42,13 +41,13 @@ export async function listFiles (directory, filter = /^.*$/) {
   const files = await fs.readdir(directory)
   for (const file of files) {
     const currentPath = path.join(directory, file)
+    // eslint-disable-next-line no-await-in-loop
     if ((await fs.stat(currentPath)).isDirectory()) {
+      // eslint-disable-next-line no-await-in-loop
       fileList = [...fileList, ...(await listFiles(currentPath))]
-    } else {
+    } else if (file.match(filter).length > 0) {
       // Filter for files matching search criterias
-      if (file.match(filter).length) {
-        fileList.push(currentPath)
-      }
+      fileList.push(currentPath)
     }
   }
 
@@ -59,7 +58,7 @@ export async function loadFiles(filePath, filter) {
   const staticFilesPath = path.join(__dirname, filePath)
   const files = await listFiles(staticFilesPath, filter)
   const filesData = []
-  await asyncForEach(files, async (file) => {
+  await asyncForEach(files, async file => {
     const fileData = await readFile(file)
     filesData.push(fileData)
   })
@@ -67,7 +66,10 @@ export async function loadFiles(filePath, filter) {
   return filesData
 }
 
-const typeDefsArray = await loadFiles('./typeDefs/' ,/^.*\.graphql\w*$/)
-const typeDefs = mergeTypeDefs(typeDefsArray)
+let typeDefsArray
+(async () => {
+  typeDefsArray = await loadFiles('./typeDefs/', /^.*\.graphql\w*$/)
+})()
 
-export { typeDefs } 
+const typeDefs = mergeTypeDefs(typeDefsArray)
+export {typeDefs}
