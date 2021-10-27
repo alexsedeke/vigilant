@@ -4,9 +4,10 @@ import {ApolloServer} from 'apollo-server-fastify'
 import {ApolloServerPluginDrainHttpServer as apolloDrainHttpServer,
   ApolloServerPluginLandingPageGraphQLPlayground as apolloLandingPageGraphQLPlayground,
   ApolloServerPluginLandingPageDisabled as apolloLandingPageDisabled} from 'apollo-server-core'
-import {Neo4jGraphQL} from '@neo4j/graphql'
 import neo4j from 'neo4j-driver'
-import {loadTypeDefinitions} from '../apollo/load-files.js'
+import {Neo4jGraphQL} from '@neo4j/graphql'
+import {OGM} from '@neo4j/graphql-ogm'
+import {loadTypeDefinitions, loadResolvers} from '../apollo/load-files.js'
 
 /**
  *
@@ -31,16 +32,21 @@ function fastifyAppClosePlugin(app) {
  * @see https://github.com/fastify/fastify-sensible
  */
 export default fp(async fastify => {
-  /**
-   * Connect to Neo4J and create Neo GraphQL Schema
-   */
+  // Init driver
   const driver = neo4j.driver(
     process.env.VL_NEO4J_DB,
     neo4j.auth.basic(process.env.VL_NEO4J_AUTH_USER, process.env.VL_NEO4J_AUTH_PASSWORD))
-
+  // Load TypeDefs
+  const typeDefs = await loadTypeDefinitions()
+  // Init OGM
+  const ogm = new OGM({typeDefs, driver})
+  // Load Custom Resolvers
+  const resolvers = await loadResolvers(ogm)
+  // Init / create Neo4J GraphQL Schema
   const neoSchema = new Neo4jGraphQL({
-    typeDefs: await loadTypeDefinitions(),
+    typeDefs,
     driver,
+    resolvers,
     config: {
       jwt: {
         secret: process.env.VL_NEO4J_JWT_SECRET

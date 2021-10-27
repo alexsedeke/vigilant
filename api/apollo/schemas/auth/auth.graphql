@@ -1,0 +1,27 @@
+type User {
+  uid: ID! @id(autogenerate: true)
+  firstname: String
+  middlenames: String
+  lastname: String
+  birthday: DateTime
+  accounts: [Account] @relationship(type: "IS_USER", direction: IN)
+  createdAt: DateTime! @timestamp(operations: [CREATE])
+}
+
+type Account {
+  email: String!
+  password: String! @private
+  active: Boolean
+  user: User! @relationship(type: "IS_USER", direction: OUT)
+}
+
+type Authenticationtoken {
+  token: String!
+  limit: DateTime! @timestamp(operations: [CREATE])
+  user: User!
+}
+
+type Mutation {
+  signUp(username: String!, password: String!): String! ### JWT
+  signIn(username: String!, password: String!): String! ### JWT
+}

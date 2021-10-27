@@ -26,6 +26,7 @@
   "dependencies": {
     "@graphql-tools/merge": "^8.2.0",
     "@neo4j/graphql": "^2.3.0",
+    "@neo4j/graphql-ogm": "^2.3.0",
     "apollo-server-core": "^3.4.0",
     "apollo-server-fastify": "^3.4.0",
     "crypto-random-string": "^4.0.0",
