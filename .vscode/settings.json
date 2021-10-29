@@ -5,4 +5,5 @@
   "editor.detectIndentation": false,
   "prettier.semi": false,
   "prettier.trailingComma": "none",
+  "files.insertFinalNewline": true,
 }

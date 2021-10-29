@@ -12,9 +12,9 @@
     "dev": "NODE_ENV=development fastify start -w -l info -P lib/app.js",
     "debug": "NODE_ENV=debug fastify start -w -l info -P lib/app.js",
     "lint": "xo",
-    "test": "tap test/**/*.test.js | tnyan",
-    "test:detail": "tap test/**/*.test.js",
-    "test:report": "tap test/**/*.test.js  --coverage-report=html"
+    "test": "tap lib/**/*.test.js | tnyan",
+    "test:detail": "tap lib/**/*.test.js",
+    "test:report": "tap lib/**/*.test.js  --coverage-report=html"
   },
   "keywords": [
     "api",
@@ -30,6 +30,7 @@
     "@neo4j/graphql-ogm": "^2.3.0",
     "apollo-server-core": "^3.4.0",
     "apollo-server-fastify": "^3.4.0",
+    "bcrypt": "^5.0.1",
     "crypto-random-string": "^4.0.0",
     "dotenv": "^10.0.0",
     "fastify": "^3.22.1",
@@ -41,6 +42,7 @@
     "fastify-multipart": "^5.0.2",
     "fastify-sensible": "^3.1.1",
     "graphql": "^15.6.1",
+    "jose": "^4.1.2",
     "neo4j-driver": "^4.3.4"
   },
   "devDependencies": {
