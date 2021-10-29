@@ -10,6 +10,7 @@
   "scripts": {
     "start": "NODE_ENV=production fastify start -l info -a 0.0.0.0 lib/app.js",
     "dev": "NODE_ENV=development fastify start -w -l info -P lib/app.js",
+    "debug": "NODE_ENV=debug fastify start -w -l info -P lib/app.js",
     "lint": "xo",
     "test": "tap test/**/*.test.js | tnyan",
     "test:detail": "tap test/**/*.test.js",
