@@ -1,12 +1,8 @@
 # Vigilant
 
 API Bootstrap on Fastify, Apollo Server and Neo4J
-
-
-## Apollo Server
-
-## Neo4J
-
+    
+[Documentation](documentation/INDEX.md)
 
 ## Environment Variables
 
