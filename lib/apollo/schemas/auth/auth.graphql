@@ -24,10 +24,15 @@ type Authenticationtoken {
 type Usering {
   id: ID @id(autogenerate: true)
   username: String!
-  password: String!
+  password: String! @private
 }
 
 type Mutation {
   signUp(username: String!, password: String!): String! ### JWT
   signIn(username: String!, password: String!): String! ### JWT
+}
+
+type Query {
+  me: Usering
+    @cypher(statement: "MATCH (u:Usering { id: $auth.jwt.sub }) RETURN u")
 }
