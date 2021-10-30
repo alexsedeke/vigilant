@@ -21,6 +21,12 @@ type Authenticationtoken {
   user: User!
 }
 
+type Usering {
+  id: ID @id(autogenerate: true)
+  username: String!
+  password: String!
+}
+
 type Mutation {
   signUp(username: String!, password: String!): String! ### JWT
   signIn(username: String!, password: String!): String! ### JWT
