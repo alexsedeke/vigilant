@@ -1,4 +1,4 @@
-type User {
+type User @auth(rules: [{ isAuthenticated: true }]) {
   uid: ID! @id(autogenerate: true)
   firstname: String
   middlenames: String
@@ -8,14 +8,14 @@ type User {
   createdAt: DateTime! @timestamp(operations: [CREATE])
 }
 
-type Account {
+type Account @auth(rules: [{ isAuthenticated: true }]) {
   email: String!
   password: String! @private
   active: Boolean
   user: User! @relationship(type: "IS_USER", direction: OUT)
 }
 
-type Authenticationtoken {
+type Authenticationtoken @auth(rules: [{ isAuthenticated: true }]) {
   token: String!
   limit: DateTime! @timestamp(operations: [CREATE])
   user: User!
