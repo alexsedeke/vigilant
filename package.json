@@ -43,7 +43,8 @@
     "fastify-sensible": "^3.1.1",
     "graphql": "^15.6.1",
     "jose": "^4.1.2",
-    "neo4j-driver": "^4.3.4"
+    "neo4j-driver": "^4.3.4",
+    "validator": "^13.6.0"
   },
   "devDependencies": {
     "tap": "^15.0.10",

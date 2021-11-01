@@ -10,8 +10,9 @@ type User @auth(rules: [{ isAuthenticated: true }]) {
 
 type Account @auth(rules: [{ isAuthenticated: true }]) {
   email: String!
-  password: String! @private
+  password: String!
   active: Boolean
+  validated: Boolean @default(value: false)
   user: User! @relationship(type: "IS_USER", direction: OUT)
 }
 
@@ -28,8 +29,8 @@ type Usering {
 }
 
 type Mutation {
-  signUp(username: String!, password: String!): String! ### JWT
-  signIn(username: String!, password: String!): String! ### JWT
+  signUp(email: String!, password: String!): String! ### JWT
+  signIn(email: String!, password: String!): String! ### JWT
 }
 
 type Query {
