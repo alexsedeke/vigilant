@@ -25,30 +25,30 @@
   "author": "Alexander Vu",
   "license": "ISC",
   "dependencies": {
-    "@graphql-tools/merge": "^8.2.0",
-    "@neo4j/graphql": "^2.3.0",
-    "@neo4j/graphql-ogm": "^2.3.0",
-    "apollo-server-core": "^3.4.0",
-    "apollo-server-fastify": "^3.4.0",
+    "@graphql-tools/merge": "^8.2.1",
+    "@neo4j/graphql": "^2.4.0",
+    "@neo4j/graphql-ogm": "^2.4.0",
+    "apollo-server-core": "^3.5.0",
+    "apollo-server-fastify": "^3.5.0",
     "bcrypt": "^5.0.1",
     "crypto-random-string": "^4.0.0",
     "dotenv": "^10.0.0",
-    "fastify": "^3.22.1",
+    "fastify": "^3.23.1",
     "fastify-autoload": "^3.9.0",
     "fastify-cli": "^2.13.0",
     "fastify-compress": "^3.6.1",
     "fastify-env": "^2.1.1",
     "fastify-helmet": "^5.3.2",
-    "fastify-multipart": "^5.0.2",
-    "fastify-sensible": "^3.1.1",
+    "fastify-multipart": "^5.1.0",
+    "fastify-sensible": "^3.1.2",
     "graphql": "^15.6.1",
-    "jose": "^4.1.2",
-    "neo4j-driver": "^4.3.4",
-    "validator": "^13.6.0"
+    "jose": "^4.2.1",
+    "neo4j-driver": "^4.4.0",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "tap": "^15.0.10",
     "tap-nyan": "^1.1.0",
-    "xo": "^0.45.0"
+    "xo": "^0.46.4"
   }
 }
