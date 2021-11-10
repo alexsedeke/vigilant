@@ -16,24 +16,19 @@ type Account @auth(rules: [{ isAuthenticated: true }]) {
   user: User! @relationship(type: "IS_USER", direction: OUT)
 }
 
-type Authenticationtoken @auth(rules: [{ isAuthenticated: true }]) {
+type Singintoken @auth(rules: [{ isAuthenticated: true }]) {
   token: String!
   limit: DateTime! @timestamp(operations: [CREATE])
-  user: User!
-}
-
-type Usering {
-  id: ID @id(autogenerate: true)
-  username: String!
-  password: String! @private
+  user: User! @relationship(type: "IS_USER", direction: OUT)
 }
 
 type Mutation {
   signUp(email: String!, password: String!): String! ### JWT
   signIn(email: String!, password: String!): String! ### JWT
+  sendMailtoken(email: String!): Boolean! ### Boolean
+  singInByToken(token: String!): String! ### JWT
 }
 
 type Query {
-  me: Usering
-    @cypher(statement: "MATCH (u:Usering { id: $auth.jwt.sub }) RETURN u")
+  me: User @cypher(statement: "MATCH (u:User { uid: $auth.jwt.sub }) RETURN u")
 }
