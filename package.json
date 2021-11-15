@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "engines": {
-    "node": ">=16"
+    "node": "=16"
   },
   "scripts": {
     "start": "NODE_ENV=production fastify start -l info -a 0.0.0.0 lib/app.js",
