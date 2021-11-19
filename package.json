@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "engines": {
-    "node": "=16"
+    "node": "=16",
+    "npm": "=8"
   },
   "scripts": {
     "start": "NODE_ENV=production fastify start -l info -a 0.0.0.0 lib/app.js",
@@ -26,11 +27,13 @@
   "license": "ISC",
   "dependencies": {
     "@graphql-tools/merge": "^8.2.1",
+    "@ladjs/graceful": "^1.1.2",
     "@neo4j/graphql": "^2.4.0",
     "@neo4j/graphql-ogm": "^2.4.0",
     "apollo-server-core": "^3.5.0",
     "apollo-server-fastify": "^3.5.0",
     "bcrypt": "^5.0.1",
+    "bree": "^7.1.0",
     "crypto-random-string": "^4.0.0",
     "dotenv": "^10.0.0",
     "fastify": "^3.23.1",
