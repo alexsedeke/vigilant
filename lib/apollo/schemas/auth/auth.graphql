@@ -18,7 +18,7 @@ type Account @auth(rules: [{ isAuthenticated: true }]) {
 
 type Singtoken @auth(rules: [{ isAuthenticated: true }]) {
   token: String!
-  limit: DateTime! @timestamp(operations: [CREATE])
+  created: DateTime! @timestamp(operations: [CREATE])
   user: User! @relationship(type: "IS_USER", direction: OUT)
 }
 
