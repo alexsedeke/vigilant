@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>Confirm Email</title>
+  </head>
+  <style>
+    body {
+      color: #000;
+      font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+      font-size: 16px;
+      line-height: 24px;
+    }
+    .intro {
+      margin: 0 auto;
+      padding: 20px;
+      max-width: 480px;
+      text-align: center;
+    }
+    .logo {
+      width: 150px;
+    }
+    .companyname {
+      font-size: 28px;
+    }
+    .content {
+      margin: 0 auto;
+      padding: 20px;
+      max-width: 480px;
+    }
+  </style>
+  <body>
+    <div class="intro">
+      <svg viewBox="0 0 656 600" fill="none" class="logo" xmlns="http://www.w3.org/2000/svg">
+        <path d="M535.84 240L431.917 60L639.763 60L535.84 240Z" fill="#05EBFF"/>
+        <path d="M327.84 600L223.917 420H431.763L327.84 600Z" fill="#20357C"/>
+        <path d="M432 420L328.077 240H535.923L432 420Z" fill="#3851A3"/>
+        <path d="M120 240L16.077 60H223.923L120 240Z" fill="#E90119"/>
+        <path d="M223.92 420L119.997 240H327.843L223.92 420Z" fill="#CC0171"/>
+        <path d="M327.84 240L431.763 420H223.917L327.84 240Z" fill="#930885"/>
+        <path d="M432 60L535.923 240L328.077 240L432 60Z" fill="#08C3D3"/>
+        <path d="M223.92 60L327.843 240L119.997 240L223.92 60Z" fill="#F9088E"/>
+      </svg>
+      <h2 class="companyname">Vigilant</h2>
+    </div>
+    <div class="content">
+      <p>Hello,</p>
+      <p>A password reset was requested for this email address (<%= emailAddress %>). If you requested this reset, click the link below to reset your password:</p>
+      <p><a href="<%= resetLink %>">Confirm Your Email</a></p>
+    </div>
+  </body>
+</html>

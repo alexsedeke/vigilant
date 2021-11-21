@@ -13,6 +13,8 @@ type Account @auth(rules: [{ isAuthenticated: true }]) {
   password: String!
   active: Boolean
   validated: Boolean @default(value: false)
+  confirmmail: Boolean @default(value: false)
+  created: DateTime @timestamp(operations: [CREATE])
   user: User! @relationship(type: "IS_USER", direction: OUT)
 }
 

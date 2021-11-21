@@ -1,3 +1,4 @@
+import path from 'node:path'
 import Bree from 'bree'
 import Graceful from '@ladjs/graceful'
 
@@ -7,10 +8,14 @@ import Graceful from '@ladjs/graceful'
 export function initCron(logger) {
   const bree = new Bree({
     logger,
+    root: path.resolve('cron/jobs'),
     jobs: [
       {
-        name: 'job-delete-outdated-tokes',
+        name: 'delete-outdated-tokes',
         interval: '5m'
+      }, {
+        name: 'send-confirmation-mails',
+        interval: '30s'
       }
     ]
   })

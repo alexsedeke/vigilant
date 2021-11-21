@@ -1,7 +1,6 @@
 import neo4j from 'neo4j-driver'
-import {config} from '../config.js'
-import {sendmail} from './mailer.js'
-import {logger} from './logger.js'
+import {config} from '../../config.js'
+import {logger} from '../logger.js'
 
 try {
   const driver = neo4j.driver(
