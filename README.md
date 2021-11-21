@@ -13,6 +13,7 @@ By default the schedule is enabled. It can be disabled by setting `VL_CRON` envi
 
 ## Email
 
+[forwardemail.net](https://forwardemail.net/en/faq)
 
 ## Environment Variables
 

@@ -2,13 +2,13 @@ import path from 'node:path'
 import {fileURLToPath} from 'node:url'
 import process from 'node:process'
 import AutoLoad from 'fastify-autoload'
-import config from './config.js'
-import initCron from './cron.js'
+import {config} from './config.js'
+import {initCron} from './cronjobs.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-export async function app(fastify, appOptions) {
+export async function api(fastify, appOptions) {
   // Place here your custom code!
   if (process.env.NODE_ENV !== 'production') {
     fastify.log.info('You are in development mode')
@@ -21,14 +21,14 @@ export async function app(fastify, appOptions) {
   // those should be support plugins that are reused
   // through your application
   fastify.register(AutoLoad, {
-    dir: path.join(__dirname, 'plugins'),
+    dir: path.join(__dirname, 'api', 'plugins'),
     options: {...appOptions}
   })
 
   // This loads all plugins defined in routes
   // define your routes in one of these
   fastify.register(AutoLoad, {
-    dir: path.join(__dirname, 'routes'),
+    dir: path.join(__dirname, 'api', 'routes'),
     ignorePattern: /.*(test|spec|helper).js/,
     options: {...appOptions}
   })
@@ -39,4 +39,4 @@ export async function app(fastify, appOptions) {
   }
 }
 
-export default app
+export default api

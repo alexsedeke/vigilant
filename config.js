@@ -13,8 +13,8 @@ dotenv.config()
 
 const config = {
   VL_NEO4J_DB: 'bolt://localhost:7687',
-  VL_NEO4J_AUTH_USER: 'neo4j',
-  VL_NEO4J_AUTH_PASSWORD: 's3cr3t',
+  VL_NEO4J_AUTH_USER: '',
+  VL_NEO4J_AUTH_PASSWORD: '',
   VL_NEO4J_TOKEN_HOURS_EXPIRE: '3',
   VL_CRON: true,
   VL_JWT_ISSUER: 'https://vigilent.app',
@@ -22,7 +22,12 @@ const config = {
   VL_JWT_EXPIRATIONTIME: '2h',
   VL_JWT_ALG: 'ES256',
   VL_JWT_KEY_PUBLIC: '',
-  VL_JWT_KEY_PRIVATE: ''
+  VL_JWT_KEY_PRIVATE: '',
+  VL_MAIL_SMTP: '',
+  VL_MAIL_AUTH_USER: '',
+  VL_MAIL_AUTH_PASSWORD: '',
+  VL_MAIL_PORT: 587,
+  VL_MAIL_FROM: ''
 }
 
 /**
@@ -69,4 +74,4 @@ for (const key of Object.keys(config)) {
   }
 }
 
-export default config
+export {config}

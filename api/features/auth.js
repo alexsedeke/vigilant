@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt'
 import {SignJWT, jwtVerify, importPKCS8, importSPKI} from 'jose'
-import config from '../config.js'
+import {config} from '../../config.js'
 
 const ecPrivateKey = await importPKCS8(config.VL_JWT_KEY_PRIVATE, 'ES256')
 const ecPublicKey = await importSPKI(config.VL_JWT_KEY_PUBLIC, 'ES256')

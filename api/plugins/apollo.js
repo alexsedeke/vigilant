@@ -8,7 +8,7 @@ import neo4j from 'neo4j-driver'
 import {Neo4jGraphQL} from '@neo4j/graphql'
 import {OGM} from '@neo4j/graphql-ogm'
 import {loadTypeDefinitions, loadResolvers} from '../apollo/load-files.js'
-import config from '../config.js'
+import {config} from '../../config.js'
 import {verifyAuthorisation} from '../features/auth.js'
 
 /**

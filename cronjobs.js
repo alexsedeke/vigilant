@@ -4,12 +4,12 @@ import Graceful from '@ladjs/graceful'
 /**
  * Define cronjobjs here
  */
-export default function initCron(logger) {
+export function initCron(logger) {
   const bree = new Bree({
     logger,
     jobs: [
       {
-        name: 'delete-outdated-tokes',
+        name: 'job-delete-outdated-tokes',
         interval: '5m'
       }
     ]
