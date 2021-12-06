@@ -23,7 +23,7 @@ try {
           template: 'confirm-email',
           templateVars: {
             emailAddress: email,
-            resetLink: 'https://justatest.com',
+            confirmLink: config.VL_MAIL_LINK_CONFIRM,
           }
         })
         // set confirmmail tag

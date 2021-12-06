@@ -18,7 +18,7 @@ type Account @auth(rules: [{ isAuthenticated: true }]) {
   user: User! @relationship(type: "IS_USER", direction: OUT)
 }
 
-type Singtoken @auth(rules: [{ isAuthenticated: true }]) {
+type Token @auth(rules: [{ isAuthenticated: true }]) {
   token: String!
   created: DateTime! @timestamp(operations: [CREATE])
   user: User! @relationship(type: "IS_USER", direction: OUT)
@@ -28,7 +28,7 @@ type Mutation {
   signUp(email: String!, password: String!): String! ### JWT
   signIn(email: String!, password: String!): String! ### JWT
   sendToken(email: String!): Boolean! ### Boolean
-  singToken(token: String!): String! ### JWT
+  singInToken(token: String!): String! ### JWT
 }
 
 type Query {

@@ -5,7 +5,7 @@ import {sendMailToken} from '../../../features/mail.js'
 
 export function ogmResolvers(ogm) {
   const Account = ogm.model('Account')
-  const Token = ogm.model('Singtoken')
+  const Token = ogm.model('Token')
 
   const resolvers = {
     Mutation: {
@@ -186,7 +186,7 @@ export function ogmResolvers(ogm) {
        * @param {Object} Contains the input values
        * @returns {Promise<string|Error>} JWT token or Error
        */
-      singToken: async (_source, {token}) => {
+      singInToken: async (_source, {token}) => {
         const findSigntoken = await Token.find({
           where: {
             token

@@ -15,7 +15,7 @@ export function initCron(logger) {
         interval: '5m'
       }, {
         name: 'send-confirmation-mails',
-        interval: '30s'
+        interval: '1m'
       }
     ]
   })

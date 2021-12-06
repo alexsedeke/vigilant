@@ -27,7 +27,9 @@ const config = {
   VL_MAIL_AUTH_USER: '',
   VL_MAIL_AUTH_PASSWORD: '',
   VL_MAIL_PORT: 587,
-  VL_MAIL_FROM: ''
+  VL_MAIL_FROM: '',
+  VL_MAIL_LINK_CONFIRM: 'http://localhost:3000/#/confirm/',
+  VL_MAIL_LINK_LOGIN: 'http://localhost:3000/#/login'
 }
 
 /**
